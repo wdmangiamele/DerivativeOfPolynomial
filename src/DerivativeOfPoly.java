@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.text.NumberFormat;
+import java.text.DecimalFormat;
+
 public class DerivativeOfPoly {
     public static void main(String[] args){
         DerivativeOfPoly dop = new DerivativeOfPoly();
@@ -6,7 +9,14 @@ public class DerivativeOfPoly {
         //takes in polynomial
         System.out.print("Enter a polynomial in \"0x^0\" format: ");
         String poly = scanner.nextLine();
+        double startTime = System.nanoTime();
         System.out.println("\nDerivative of this polynomial is: "+dop.calc(poly));
+        final double endTime = System.nanoTime();
+        final double duration = (endTime - startTime)/100000000;
+        NumberFormat formatter = new DecimalFormat("###.#####");
+        String f = formatter.format(duration);
+
+        System.out.println("\nProgram Runtime: "+f+" seconds");
     }
 
     private String calc(String poly){
